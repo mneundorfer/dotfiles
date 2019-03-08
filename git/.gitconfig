@@ -1,0 +1,14 @@
+[user]
+	email = code@mneundorfer.de
+	name = Maximilian Neundorfer
+
+[alias]
+	s = status -s
+	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+	llb = for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:cyan)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) @ %(committerdate:iso) (%(color:green)%(committerdate:relative)%(color:reset))'
+	lrb = for-each-ref --sort=committerdate refs/remotes/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:cyan)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) @ %(committerdate:iso) (%(color:green)%(committerdate:relative)%(color:reset))'
+
+[push]
+	default = current
+    followTags = true
