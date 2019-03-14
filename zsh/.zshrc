@@ -89,6 +89,7 @@ alias de="docker exec -it"
 
 alias gti="git"
 alias co="git checkout"
+function gitdrb { git push --delete ${2:-origin} $1 }
 
 alias grun="gradle bootRun"
 alias gnrun="gradle --no-daemon bootRun"
