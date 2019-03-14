@@ -8,6 +8,8 @@
 	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
 	llb = for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:cyan)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) @ %(committerdate:iso) (%(color:green)%(committerdate:relative)%(color:reset))'
 	lrb = for-each-ref --sort=committerdate refs/remotes/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:cyan)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) @ %(committerdate:iso) (%(color:green)%(committerdate:relative)%(color:reset))'
+	drb = "!f() { git push --delete ${2:-origin} $1; }; f"
+	undocommit = "git reset HEAD~"
 
 [push]
 	default = current
