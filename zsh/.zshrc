@@ -112,10 +112,12 @@ function findcs { find . -name "$1.cs" }
 function repl { find ${3:-.} -type f -print0 | xargs -0 sed -i -e 's,'$1','$2',' }
 
 # pass all $1 to $2, e.g. 'build.gradle' and 'code' means, open all build.gradle with code
-function exec-on-file { find . -name "$1" -exec $2 {} \+ }
+function execonfile { find . -name "$1" -exec $2 {} \+ }
 
 # count lines in files with specific ending, e.g. countlines java
 function countlines { find ${2:-.} -type f -name "*.$1" -exec wc -l {} + | sort -n }
+# count lines in files with specific ending, but omit test classes, e.g. countlinesnotest cs
+function countlinesnotest { find ${2:-.} -type f -name "*.$1" -not -name "*Test.$1" -exec wc -l {} + | sort -n }
 
 alias untar="tar xzf"
 
