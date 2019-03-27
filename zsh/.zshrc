@@ -98,6 +98,8 @@ alias dt="dotnet test"
 
 alias curls="curl -s -o /dev/null -w '%{http_code}'"
 
+alias xclip="xclip -selection c"
+
 function portf { lsof -i:$1 }
 function portff { ss | grep $1 }
 
@@ -120,5 +122,11 @@ function countlines { find ${2:-.} -type f -name "*.$1" -exec wc -l {} + | sort 
 function countlinesnotest { find ${2:-.} -type f -name "*.$1" -not -name "*Test.$1" -exec wc -l {} + | sort -n }
 
 alias untar="tar xzf"
+
+# HSTR config
+alias hh=hstr                     # hh to be alias for hstr
+export HISTFILE=~/.zsh_history    # ensure history file visibility
+export HSTR_CONFIG=hicolor        # get more colors
+bindkey -s "\C-r" "\eqhstr\n"     # bind hstr to Ctrl-r (for Vi mode check doc)
 
 xhost local:root
