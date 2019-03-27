@@ -4,10 +4,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH="/home/mn/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="mn"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -82,33 +78,41 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-alias ex="xdg-open"
+###
+# custom aliases
+###
 
+# misc
+alias ex="xdg-open"
+alias xclip="xclip -selection c"
+alias untar="tar xzf"
+alias curls="curl -s -o /dev/null -w '%{http_code}'"
+
+# typos
+alias gti="git"
+
+# docker
 alias dp="docker ps"
 alias de="docker exec -it"
 
-alias gti="git"
-
+# development
 alias grun="gradle bootRun"
 alias gnrun="gradle --no-daemon bootRun"
-
 alias db="dotnet build"
 alias dr="dotnet run"
 alias dt="dotnet test"
 
-alias curls="curl -s -o /dev/null -w '%{http_code}'"
+# HSTR config
+alias hh=hstr                     # hh to be alias for hstr
+export HISTFILE=~/.zsh_history    # ensure history file visibility
+export HSTR_CONFIG=hicolor        # get more colors
+bindkey -s "\C-r" "\eqhstr\n"     # bind hstr to Ctrl-r (for Vi mode check doc)
 
-alias xclip="xclip -selection c"
+###
+# custom functions
+###
 
-function portf { lsof -i:$1 }
-function portff { ss | grep $1 }
-
-function grepj { grep -r --include \*.java --exclude-dir test "$1" ${2:-.} }
-function findj { find . -name "$1.java" }
-
-function grepcs { grep -r --include \*.cs --exclude "*.Test" "$1" ${2:-.} }
-function findcs { find . -name "$1.cs" }
-
+# misc
 # custom delimiter, because I occasionally replace paths...
 # https://www.unix.com/302211291-post2.html?s=c643e85d891ee4c88e3ba954f81fd348
 function repl { find ${3:-.} -type f -print0 | xargs -0 sed -i -e 's,'$1','$2',' }
@@ -121,12 +125,19 @@ function countlines { find ${2:-.} -type f -name "*.$1" -exec wc -l {} + | sort 
 # count lines in files with specific ending, but omit test classes, e.g. countlinesnotest cs
 function countlinesnotest { find ${2:-.} -type f -name "*.$1" -not -name "*Test.$1" -exec wc -l {} + | sort -n }
 
-alias untar="tar xzf"
+# network
+function portf { lsof -i:$1 }
+function portff { ss | grep $1 }
 
-# HSTR config
-alias hh=hstr                     # hh to be alias for hstr
-export HISTFILE=~/.zsh_history    # ensure history file visibility
-export HSTR_CONFIG=hicolor        # get more colors
-bindkey -s "\C-r" "\eqhstr\n"     # bind hstr to Ctrl-r (for Vi mode check doc)
+# examine code bases
+function grepj { grep -r --include \*.java --exclude-dir test "$1" ${2:-.} }
+function findj { find . -name "$1.java" }
 
+function grepcs { grep -r --include \*.cs --exclude "*.Test" "$1" ${2:-.} }
+function findcs { find . -name "$1.cs" }
+
+function grepkt { grep -r --include \*.kt --exclude-dir test "$1" ${2:-.} }
+function findkt { find . -name "$1.kt" }
+
+# allow docker X11 forwarding to host
 xhost local:root
