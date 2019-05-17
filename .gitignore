@@ -1,0 +1,3 @@
+# otherwise we will be cluttered with all the other stuff that lives in these directories
+intellij/
+vscode/
