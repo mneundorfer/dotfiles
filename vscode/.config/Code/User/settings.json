@@ -14,5 +14,8 @@
         "**/node_modules/*/**": true
     },
     "workbench.startupEditor": "newUntitledFile",
-    "workbench.sideBar.location": "right"
+    "workbench.sideBar.location": "right",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "workbench.colorCustomizations": {}
 }

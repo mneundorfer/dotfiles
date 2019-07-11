@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$PATH:/home/mn/code/depot_tools
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/mn/.oh-my-zsh"
@@ -53,7 +54,7 @@ export UPDATE_ZSH_DAYS=30
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git docker docker-compose gradle
+  git docker docker-compose gradle sudo battery bgnotify command-not-found dirhistory ripgrep virtualenv
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -87,6 +88,7 @@ alias ex="xdg-open"
 alias xclip="xclip -selection c"
 alias untar="tar xzf"
 alias curls="curl -s -o /dev/null -w '%{http_code}'"
+alias serve="python3 -m http.server"
 
 # typos
 alias gti="git"
@@ -102,11 +104,16 @@ alias db="dotnet build"
 alias dr="dotnet run"
 alias dt="dotnet test"
 
-# HSTR config
-alias hh=hstr                     # hh to be alias for hstr
-export HISTFILE=~/.zsh_history    # ensure history file visibility
-export HSTR_CONFIG=hicolor        # get more colors
-bindkey -s "\C-r" "\eqhstr\n"     # bind hstr to Ctrl-r (for Vi mode check doc)
+# allows for "CORS" requests to file:// (https://stackoverflow.com/a/18147161)
+alias chrome-dev="chromium --allow-file-access-from-files"
+
+# HSTR config (only if installed, otherwise CTRL+R is broken...)
+if type hstr > /dev/null; then
+  alias hh=hstr                     # hh to be alias for hstr
+  export HISTFILE=~/.zsh_history    # ensure history file visibility
+  export HSTR_CONFIG=hicolor        # get more colors
+  bindkey -s "\C-r" "\eqhstr\n"     # bind hstr to Ctrl-r (for Vi mode check doc)
+fi
 
 ###
 # custom functions
@@ -116,6 +123,9 @@ bindkey -s "\C-r" "\eqhstr\n"     # bind hstr to Ctrl-r (for Vi mode check doc)
 # custom delimiter, because I occasionally replace paths...
 # https://www.unix.com/302211291-post2.html?s=c643e85d891ee4c88e3ba954f81fd348
 function repl { find ${3:-.} -type f -print0 | xargs -0 sed -i -e 's,'$1','$2',' }
+
+# convert video to different resolution, e.g. `scale_video input_video.mp4 480:270 output.mp4
+function scale_video { ffmpeg -i $1 -vf scale=$2 $3 -hide_banner }
 
 # pass all $1 to $2, e.g. 'build.gradle' and 'code' means, open all build.gradle with code
 function execonfile { find . -name "$1" -exec $2 {} \+ }
@@ -128,6 +138,9 @@ function countlinesnotest { find ${2:-.} -type f -name "*.$1" -not -name "*Test.
 # network
 function portf { lsof -i:$1 }
 function portff { ss | grep $1 }
+
+function addip { ip addr add $1/24 dev $2 }
+function delip { ip addr del $1/24 dev $2 }
 
 # examine code bases
 function grepj { grep -r --include \*.java --exclude-dir test "$1" ${2:-.} }

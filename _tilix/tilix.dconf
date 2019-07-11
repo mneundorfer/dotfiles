@@ -1,0 +1,68 @@
+[keybindings]
+session-add-down='<Primary><Alt>b'
+
+[/]
+tab-position='top'
+quake-hide-lose-focus=false
+theme-variant='dark'
+window-style='disable-csd'
+
+[profiles]
+list=['2b7c4080-0ddd-46c5-8f23-563fd3ba789d', 'dcba0bed-3f54-483a-99fe-276203e2896f']
+default='dcba0bed-3f54-483a-99fe-276203e2896f'
+
+[profiles/dcba0bed-3f54-483a-99fe-276203e2896f]
+cursor-shape='block'
+cursor-colors-set=false
+bold-color-set=false
+terminal-bell='sound'
+scroll-on-keystroke=true
+cjk-utf8-ambiguous-width='narrow'
+default-size-rows=24
+encoding='UTF-8'
+triggers=@as []
+automatic-switch=@as []
+custom-command=''
+visible-name='mn'
+text-blink-mode='always'
+terminal-title='${id}: ${title}'
+use-theme-colors=false
+cell-height-scale=1.0
+badge-text=''
+exit-action='close'
+use-system-font=false
+backspace-binding='ascii-delete'
+rewrap-on-resize=true
+foreground-color='#F8F8F2'
+login-shell=false
+background-transparency-percent=6
+cursor-blink-mode='system'
+dim-transparency-percent=0
+bold-is-bright=true
+cell-width-scale=1.0
+default-size-columns=80
+background-color='#272728282222'
+cursor-foreground-color='#ffffff'
+allow-bold=true
+palette=['#272822', '#F92672', '#A6E22E', '#F4BF75', '#66D9EF', '#AE81FF', '#72729F9FCFCF', '#F8F8F2', '#272728282222', '#F92672', '#A6E22E', '#F4BF75', '#66D9EF', '#AE81FF', '#72729F9FCFCF', '#F9F8F5']
+notify-silence-threshold=0
+badge-color='#ffffff'
+highlight-foreground-color='#ffffff'
+font='Monospace 9'
+delete-binding='delete-sequence'
+badge-position='northeast'
+custom-hyperlinks=['(^[a-zA-Z0-9\\/\\_\\-\\.\\]+\\.?[a-zA-Z0-9]+)\\:([0-9]+),,false']
+scrollback-unlimited=false
+cursor-background-color='#000000'
+highlight-background-color='#000000'
+scroll-on-output=false
+select-by-word-chars='-,./?%&#:_'
+use-custom-command=false
+badge-color-set=false
+bold-color='#ffffff'
+highlight-colors-set=false
+scrollback-lines=8192
+show-scrollbar=true
+
+[profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
+visible-name='Default'

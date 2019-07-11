@@ -38,3 +38,6 @@ set laststatus=2
 set clipboard+=unnamed  " use the clipboards of vim and win
 set paste               " Paste from a windows or from vim
 set go+=a               " Visual selection automatically copied to the clipboard
+
+" Use this when having opened a file w/o sudo, already made changes to it, and now don't want to lose them 
+":w !sudo tee %
