@@ -41,3 +41,4 @@ set go+=a               " Visual selection automatically copied to the clipboard
 
 " Use this when having opened a file w/o sudo, already made changes to it, and now don't want to lose them 
 ":w !sudo tee %
+" then (L)oad
