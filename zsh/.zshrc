@@ -152,5 +152,13 @@ function findcs { find . -name "$1.cs" }
 function grepkt { grep -r --include \*.kt --exclude-dir test "$1" ${2:-.} }
 function findkt { find . -name "$1.kt" }
 
+# docker
+# remove containers by (exact) *image* name
+function drm { docker rm $(docker ps -a -q --filter ancestor=$1) }
+
+# fun
+# use numblock LED 3 for ping feedback @climagic
+function lping {  ping $1 | stdbuf -oL awk -F"[=\ ]" '/from/{ms=$(NF-1); print ms/1000.0 " " 1-ms/1000.0}' | while read on off ; do echo $on $off ; xset led 3 ; sleep $on ; xset -led 3 ; sleep $off ; done }
+
 # allow docker X11 forwarding to host
 xhost local:root
