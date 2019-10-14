@@ -155,6 +155,9 @@ function findkt { find . -name "$1.kt" }
 # docker
 # remove containers by (exact) *image* name
 function drm { docker rm $(docker ps -a -q --filter ancestor=$1) }
+function drmf { docker rm -f $(docker ps -a -q --filter ancestor=$1) }
+
+function lukas { curl --data '{"text": $1"}' https://circuit.siemens.com/rest/v2/webhooks/incoming/d9b7ed6a-cb12-41be-a78b-797126e3e2d9 }
 
 # fun
 # use numblock LED 3 for ping feedback @climagic
@@ -162,3 +165,7 @@ function lping {  ping $1 | stdbuf -oL awk -F"[=\ ]" '/from/{ms=$(NF-1); print m
 
 # allow docker X11 forwarding to host
 xhost local:root
+
+bindkey \^U backward-kill-line
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
