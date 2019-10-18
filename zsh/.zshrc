@@ -1,6 +1,5 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$PATH:/home/$USER/code/depot_tools
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/$USER/.oh-my-zsh"
@@ -157,8 +156,6 @@ function findkt { find . -name "$1.kt" }
 function drm { docker rm $(docker ps -a -q --filter ancestor=$1) }
 function drmf { docker rm -f $(docker ps -a -q --filter ancestor=$1) }
 
-function lukas { curl --data '{"text": $1"}' https://circuit.siemens.com/rest/v2/webhooks/incoming/d9b7ed6a-cb12-41be-a78b-797126e3e2d9 }
-
 # fun
 # use numblock LED 3 for ping feedback @climagic
 function lping {  ping $1 | stdbuf -oL awk -F"[=\ ]" '/from/{ms=$(NF-1); print ms/1000.0 " " 1-ms/1000.0}' | while read on off ; do echo $on $off ; xset led 3 ; sleep $on ; xset -led 3 ; sleep $off ; done }
@@ -166,6 +163,7 @@ function lping {  ping $1 | stdbuf -oL awk -F"[=\ ]" '/from/{ms=$(NF-1); print m
 # allow docker X11 forwarding to host
 xhost local:root
 
+# make CTRL+U work to delete everything left from the cursor in ZSH
 bindkey \^U backward-kill-line
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
