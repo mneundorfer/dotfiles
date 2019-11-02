@@ -106,7 +106,7 @@ alias dt="dotnet test"
 # allows for "CORS" requests to file:// (https://stackoverflow.com/a/18147161)
 alias chrome-dev="chromium --allow-file-access-from-files"
 
-# HSTR config (only if installed, otherwise CTRL+R is broken...)
+# HSTR config
 if type hstr > /dev/null; then
   alias hh=hstr                     # hh to be alias for hstr
   export HISTFILE=~/.zsh_history    # ensure history file visibility
@@ -161,7 +161,9 @@ function drmf { docker rm -f $(docker ps -a -q --filter ancestor=$1) }
 function lping {  ping $1 | stdbuf -oL awk -F"[=\ ]" '/from/{ms=$(NF-1); print ms/1000.0 " " 1-ms/1000.0}' | while read on off ; do echo $on $off ; xset led 3 ; sleep $on ; xset -led 3 ; sleep $off ; done }
 
 # allow docker X11 forwarding to host
-xhost local:root
+if type xhost > /dev/null; then
+  xhost local:root
+fi
 
 # make CTRL+U work to delete everything left from the cursor in ZSH
 bindkey \^U backward-kill-line
