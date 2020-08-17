@@ -53,7 +53,7 @@ export UPDATE_ZSH_DAYS=30
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git docker docker-compose gradle sudo battery bgnotify command-not-found dirhistory ripgrep virtualenv
+  git docker docker-compose gradle sudo virtualenv
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -82,19 +82,22 @@ source $ZSH/oh-my-zsh.sh
 # custom aliases
 ###
 
+alias xc="cd ~/code/05-build/trit-modularization-pilot"
+
 # misc
 alias ex="xdg-open"
 alias xclip="xclip -selection c"
 alias untar="tar xzf"
 alias curls="curl -s -o /dev/null -w '%{http_code}'"
 alias serve="python3 -m http.server"
+alias winit="sudo stat /proc/1/exe"
 
 # typos
 alias gti="git"
 
 # docker
 alias dp="docker ps"
-alias de="docker exec -it"
+function de { docker exec -it $1 /bin/bash }
 
 # development
 alias grun="gradle bootRun"
@@ -113,6 +116,8 @@ if type hstr > /dev/null; then
   export HSTR_CONFIG=hicolor        # get more colors
   bindkey -s "\C-r" "\eqhstr\n"     # bind hstr to Ctrl-r (for Vi mode check doc)
 fi
+
+alias ltop="lazydocker"
 
 ###
 # custom functions
@@ -140,6 +145,12 @@ function portff { ss | grep $1 }
 
 function addip { ip addr add $1/24 dev $2 }
 function delip { ip addr del $1/24 dev $2 }
+
+function up { ip link set up dev $1 }
+function down { ip link set down dev $1 }
+
+# find ip addresses in the given network ($1 = X.X.X.0)
+function nwscan { nmap -sP $1/24 }
 
 # examine code bases
 function grepj { grep -r --include \*.java --exclude-dir test "$1" ${2:-.} }
@@ -169,3 +180,6 @@ fi
 bindkey \^U backward-kill-line
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+eval "$(starship init zsh)"
+

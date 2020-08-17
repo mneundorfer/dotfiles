@@ -2,7 +2,6 @@ user="%n"
 host="%m"
 directory="%~"
 short_directory="%c"
-RPROMPT='$(battery_pct_prompt)'
 PROMPT='%{$fg[white]%}$user@$host (%D %*) %{$fg_bold[white]%}➜ %{$bg_bold[cyan]%}$directory%{$reset_color%} %{$fg_bold[white]%}$(git_prompt_info) %{$fg_bold[green]%}$(virtualenv_prompt_info)%{$reset_color%}
 %{$fg_bold[cyan]%}$ % %{$reset_color%}'
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[white]%}["
