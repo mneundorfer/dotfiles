@@ -4,7 +4,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH="/home/$USER/.oh-my-zsh"
 
-ZSH_THEME="mn"
+ZSH_THEME="spaceship"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -82,8 +82,6 @@ source $ZSH/oh-my-zsh.sh
 # custom aliases
 ###
 
-alias xc="cd ~/code/05-build/trit-modularization-pilot"
-
 # misc
 alias ex="xdg-open"
 alias xclip="xclip -selection c"
@@ -91,6 +89,8 @@ alias untar="tar xzf"
 alias curls="curl -s -o /dev/null -w '%{http_code}'"
 alias serve="python3 -m http.server"
 alias winit="sudo stat /proc/1/exe"
+alias gf="gitfiend . &"
+alias tssh="ssh -T git@github.com"
 
 # typos
 alias gti="git"
@@ -105,6 +105,14 @@ alias gnrun="gradle --no-daemon bootRun"
 alias db="dotnet build"
 alias dr="dotnet run"
 alias dt="dotnet test"
+
+alias clean-python="rm -rf **/.pytest_cache; rm -rf **/.venv; rm -rf **/.buildvenv; rm -rf **/__pycache__; rm -rf **/.pyc"
+
+# delete local git branches which don't have a tracking branch anymore
+# manual step in between to be able to remove branches which should be kept
+# https://stackoverflow.com/a/28464339
+alias remove-local-branches="git branch --merged >/tmp/merged-branches && vim /tmp/merged-branches && xargs git branch -d </tmp/merged-branches"
+alias grepdiff="git diff $1 -G $2"
 
 # allows for "CORS" requests to file:// (https://stackoverflow.com/a/18147161)
 alias chrome-dev="chromium --allow-file-access-from-files"

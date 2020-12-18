@@ -8,6 +8,8 @@
   // make underscores visible in terminal
   "window.zoomLevel": 0,
   "explorer.confirmDragAndDrop": false,
+  // don't jump to open file in explorer
+  "explorer.autoReveal": false,
   "terminal.integrated.rendererType": "dom",
   "files.exclude": {
     "**/.classpath": true,
@@ -26,6 +28,7 @@
     "**/bin/**": true,
     "**/lib64/**": true
   },
+  "search.followSymlinks": false,
   "workbench.startupEditor": "newUntitledFile",
   "workbench.sideBar.location": "right",
   "editor.suggestSelection": "first",
@@ -42,5 +45,16 @@
   "[groovy]": {
     "editor.defaultFormatter": "NicolasVuillamy.vscode-groovy-lint"
   },
-  "workbench.iconTheme": "material-icon-theme"
+  "workbench.iconTheme": "material-icon-theme",
+  "python.languageServer": "Microsoft",
+  "python.formatting.autopep8Args": [
+    "--max-line-length=200",
+    "--indent-size=2"
+  ],
+  "workbench.editorAssociations": [
+    {
+      "viewType": "jupyter.notebook.ipynb",
+      "filenamePattern": "*.ipynb"
+    }
+  ]
 }
