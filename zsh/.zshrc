@@ -4,7 +4,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH="/home/$USER/.oh-my-zsh"
 
-ZSH_THEME="spaceship"
+ZSH_THEME="af-magic"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -187,7 +187,21 @@ fi
 # make CTRL+U work to delete everything left from the cursor in ZSH
 bindkey \^U backward-kill-line
 
+# make use of zsh's REPORTTIME https://nuclearsquid.com/writings/reporttime-in-zsh/
+export REPORTTIME=5
+
+function preexec() {
+  timer=${timer:-$SECONDS}
+}
+
+function precmd() {
+  if [ $timer ]; then
+      timer_show=$(($SECONDS - $timer))
+      timer_show=$(printf '%.*f\n' 0 $timer_show)
+      unset timer
+  fi
+}
+
+RPS1+='[%?] : took ${timer_show}s'
+
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
-eval "$(starship init zsh)"
-
