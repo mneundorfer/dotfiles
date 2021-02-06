@@ -196,9 +196,11 @@ function preexec() {
 
 function precmd() {
   if [ $timer ]; then
-      timer_show=$(($SECONDS - $timer))
-      timer_show=$(printf '%.*f\n' 0 $timer_show)
-      unset timer
+    timer_show=$(($SECONDS - $timer))
+    timer_show=$(printf '%.*f\n' 0 $timer_show)
+    unset timer
+  else
+    timer_show='-'
   fi
 }
 
