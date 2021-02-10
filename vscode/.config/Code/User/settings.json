@@ -2,9 +2,9 @@
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.fontSize": 13,
-  "editor.fontFamily": "'Noto Mono', 'Droid Sans Mono', 'Courier New', monospace, 'Droid Sans Fallback'",
+  "editor.fontFamily": "'Fira Code', 'Noto Mono', 'Droid Sans Mono', 'Courier New', monospace, 'Droid Sans Fallback'",
+  "editor.fontLigatures": true,
   // make underscores visible in terminal
   "window.zoomLevel": 0,
   "explorer.confirmDragAndDrop": false,
@@ -56,5 +56,6 @@
       "viewType": "jupyter.notebook.ipynb",
       "filenamePattern": "*.ipynb"
     }
-  ]
+  ],
+  "files.autoSave": "afterDelay"
 }
