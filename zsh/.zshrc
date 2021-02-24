@@ -4,7 +4,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH="/home/$USER/.oh-my-zsh"
 
-ZSH_THEME="af-magic"
+ZSH_THEME="spaceship"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -203,6 +203,12 @@ function precmd() {
     timer_show='-'
   fi
 }
+
+# patch the default dircolors to have black as background for otherwise unreadable
+# OTHER_WRITEABLE: https://unix.stackexchange.com/a/94508
+if [ ! -L ~/.dircolors ]; then
+  eval "$(dircolors ~/.dircolors)";
+fi
 
 RPS1+='[%?] : took ${timer_show}s'
 
