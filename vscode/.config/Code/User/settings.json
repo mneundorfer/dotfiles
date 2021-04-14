@@ -10,7 +10,10 @@
   "explorer.confirmDragAndDrop": false,
   // don't jump to open file in explorer
   "explorer.autoReveal": false,
-  "terminal.integrated.rendererType": "dom",
+  "terminal.integrated.rendererType": "auto",
+  "terminal.integrated.allowChords": false,
+  "terminal.integrated.drawBoldTextInBrightColors": false,
+  "terminal.integrated.experimentalLinkProvider": false,
   "files.exclude": {
     "**/.classpath": true,
     "**/.project": true,
@@ -51,11 +54,7 @@
     "--max-line-length=200",
     "--indent-size=2"
   ],
-  "workbench.editorAssociations": [
-    {
-      "viewType": "jupyter.notebook.ipynb",
-      "filenamePattern": "*.ipynb"
-    }
-  ],
-  "files.autoSave": "afterDelay"
+  "workbench.editorAssociations": [],
+  "files.autoSave": "afterDelay",
+  "workbench.colorTheme": "Default Light+"
 }

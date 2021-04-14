@@ -1,33 +1,40 @@
 [user]
-	email = code@mneundorfer.de
-	name = Maximilian Neundorfer
+  email = code@mneundorfer.de
+  name = Maximilian Neundorfer
 
 [alias]
-	s = status -s
-	co = checkout
-	pr = pull --rebase
-	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
-	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
-	llb = for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:cyan)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) @ %(committerdate:iso) (%(color:green)%(committerdate:relative)%(color:reset))'
-	lrb = for-each-ref --sort=committerdate refs/remotes/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:cyan)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) @ %(committerdate:iso) (%(color:green)%(committerdate:relative)%(color:reset))'
-	drb = "!f() { git push --delete ${2:-origin} $1; }; f"
-	undocommit = "git reset HEAD~"
-	rrb = "!f() { git pull --rebase ${2:-origin} $1; }; f"
-	log1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-	log2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
-    cor = !git for-each-ref --sort=-committerdate --format='%(refname:short) (%(committerdate:relative))' refs/heads | fzf --reverse --height 35% --nth 1 | awk '{print $1}' | xargs git checkout
+  s = status -s
+  co = checkout
+  pr = pull --rebase
+  cp = cherry-pick
+  d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+  go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+  llb = for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:cyan)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) @ %(committerdate:iso) (%(color:green)%(committerdate:relative)%(color:reset))'
+  lrb = for-each-ref --sort=committerdate refs/remotes/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:cyan)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) @ %(committerdate:iso) (%(color:green)%(committerdate:relative)%(color:reset))'
+  drb = "!f() { git push --delete ${2:-origin} $1; }; f"
+  undocommit = "git reset HEAD~"
+  rrb = "!f() { git pull --rebase ${2:-origin} $1; }; f"
+  log1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+  log2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+  cor = !git for-each-ref --sort=-committerdate --format='%(refname:short) (%(committerdate:relative))' refs/heads | fzf --reverse --height 35% --nth 1 | awk '{print $1}' | xargs git checkout
+  lola = "log --graph --decorate --pretty=oneline --abbrev-commit --all"
+  lolas = "lola --name-status"
 
 [push]
-	default = current
-    followTags = true
+  default = current
+  followTags = true
 
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 
 [merge]
-	conflictstyle = diff3
+  conflictstyle = diff3
+
 [credential]
-	helper = store
+  helper = store
+
+[rerere]
+  enabled = 1

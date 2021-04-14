@@ -91,6 +91,7 @@ alias serve="python3 -m http.server"
 alias winit="sudo stat /proc/1/exe"
 alias gf="gitfiend . &"
 alias tssh="ssh -T git@github.com"
+alias lssh="ls -lSh"
 
 # typos
 alias gti="git"
@@ -113,6 +114,7 @@ alias clean-python="rm -rf **/.pytest_cache; rm -rf **/.venv; rm -rf **/.buildve
 # https://stackoverflow.com/a/28464339
 alias remove-local-branches="git branch --merged >/tmp/merged-branches && vim /tmp/merged-branches && xargs git branch -d </tmp/merged-branches"
 alias grepdiff="git diff $1 -G $2"
+function gir { git check-ignore -v $1 }
 
 # allows for "CORS" requests to file:// (https://stackoverflow.com/a/18147161)
 alias chrome-dev="chromium --allow-file-access-from-files"
@@ -211,5 +213,8 @@ if [ ! -L ~/.dircolors ]; then
 fi
 
 RPS1+='[%?] : took ${timer_show}s'
+
+# highlight stderr output
+#exec 2>>(while read line; do print '\e[45m[☇ stderr]\e[0m '${(q)line}'' > /dev/tty; print -n $'\0'; done &)
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
