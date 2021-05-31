@@ -208,11 +208,16 @@ function precmd() {
 
 # patch the default dircolors to have black as background for otherwise unreadable
 # OTHER_WRITEABLE: https://unix.stackexchange.com/a/94508
-if [ ! -L ~/.dircolors ]; then
-  eval "$(dircolors ~/.dircolors)";
+if [[ -f ~/.dircolors ]] ; then
+    eval $(dircolors -b ~/.dircolors)     
+elif [[ -f /etc/DIR_COLORS ]] ; then
+    eval $(dircolors -b /etc/DIR_COLORS)
 fi
 
 RPS1+='[%?] : took ${timer_show}s'
+
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
+source /usr/share/doc/fzf/examples/key-bindings.zsh
 
 # highlight stderr output
 #exec 2>>(while read line; do print '\e[45m[☇ stderr]\e[0m '${(q)line}'' > /dev/tty; print -n $'\0'; done &)
