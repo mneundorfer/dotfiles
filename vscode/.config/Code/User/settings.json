@@ -10,7 +10,6 @@
   "explorer.confirmDragAndDrop": false,
   // don't jump to open file in explorer
   "explorer.autoReveal": false,
-  "terminal.integrated.rendererType": "auto",
   "terminal.integrated.allowChords": false,
   "terminal.integrated.drawBoldTextInBrightColors": false,
   "terminal.integrated.experimentalLinkProvider": false,
@@ -42,7 +41,6 @@
   "gitlens.views.lineHistory.location": "explorer",
   "gitlens.views.compare.location": "gitlens",
   "gitlens.views.search.location": "gitlens",
-  "terminal.integrated.shell.linux": "/bin/zsh",
   "editor.detectIndentation": false,
   "python.jediEnabled": false,
   "[groovy]": {
