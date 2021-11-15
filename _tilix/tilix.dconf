@@ -1,12 +1,3 @@
-[keybindings]
-session-add-down='<Primary><Alt>b'
-
-[/]
-tab-position='top'
-quake-hide-lose-focus=false
-theme-variant='dark'
-window-style='disable-csd'
-
 [profiles]
 list=['2b7c4080-0ddd-46c5-8f23-563fd3ba789d', 'dcba0bed-3f54-483a-99fe-276203e2896f']
 default='dcba0bed-3f54-483a-99fe-276203e2896f'
@@ -33,7 +24,7 @@ exit-action='close'
 use-system-font=false
 backspace-binding='ascii-delete'
 rewrap-on-resize=true
-foreground-color='#F8F8F2'
+foreground-color='#2E2E34343636'
 login-shell=false
 background-transparency-percent=6
 cursor-blink-mode='system'
@@ -41,14 +32,14 @@ dim-transparency-percent=0
 bold-is-bright=true
 cell-width-scale=1.0
 default-size-columns=80
-background-color='#272728282222'
+background-color='#FFFFFFFFFFFF'
 cursor-foreground-color='#ffffff'
 allow-bold=true
-palette=['#272822', '#F92672', '#A6E22E', '#F4BF75', '#66D9EF', '#AE81FF', '#72729F9FCFCF', '#F8F8F2', '#272728282222', '#F92672', '#A6E22E', '#F4BF75', '#66D9EF', '#AE81FF', '#72729F9FCFCF', '#F9F8F5']
+palette=['#000000', '#F5F579790000', '#4D9A05', '#C3A000', '#3464A3', '#754F7B', '#05979A', '#D3D6CF', '#545652', '#EFEF29292929', '#89E234', '#FBE84F', '#729ECF', '#AC7EA8', '#3F3FA8A8BFBF', '#EDEDEB']
 notify-silence-threshold=0
-badge-color='#ffffff'
+badge-color='#AC7EA8'
 highlight-foreground-color='#ffffff'
-font='Monospace 9'
+font='Fira Code Light 11'
 delete-binding='delete-sequence'
 badge-position='northeast'
 custom-hyperlinks=['(^[a-zA-Z0-9\\/\\_\\-\\.\\]+\\.?[a-zA-Z0-9]+)\\:([0-9]+),,false']
@@ -58,7 +49,7 @@ highlight-background-color='#000000'
 scroll-on-output=false
 select-by-word-chars='-,./?%&#:_'
 use-custom-command=false
-badge-color-set=false
+badge-color-set=true
 bold-color='#ffffff'
 highlight-colors-set=false
 scrollback-lines=8192
@@ -66,3 +57,14 @@ show-scrollbar=true
 
 [profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
 visible-name='Default'
+
+[/]
+quake-specific-monitor=0
+tab-position='top'
+quake-hide-lose-focus=false
+theme-variant='dark'
+warn-vte-config-issue=false
+window-style='disable-csd'
+
+[keybindings]
+session-add-down='<Primary><Alt>b'
