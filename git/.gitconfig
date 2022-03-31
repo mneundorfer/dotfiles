@@ -1,6 +1,7 @@
 [user]
-  email = code@mneundorfer.de
+  email = maximilian.neundorfer.ext@siemens.com
   name = Maximilian Neundorfer
+  signingkey = C53DB07A7DE57996AED9DD618E279724030CD90D
 
 [alias]
   s = status -s
@@ -22,6 +23,7 @@
   pf = push --force-with-lease
   untrack = "!f() { git update-index --assume-unchanged $1; }; f"
   track = "!f() { git update-index --no-assume-unchanged $1; }; f"
+  getback = "!f() { git checkout HEAD~$1 $2; }; f"
 
 [push]
   default = current
@@ -41,3 +43,6 @@
 
 [rerere]
   enabled = 1
+
+# [commit]
+# 	gpgsign = true
