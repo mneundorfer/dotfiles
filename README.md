@@ -15,3 +15,9 @@ stow tmux vscode # whatever you like...
 # or
 find . -maxdepth 1 -mindepth 1 -type d -exec stow {} +
 ```
+
+## Tools
+
+```
+apt-get install -y ncdu xclip
+```

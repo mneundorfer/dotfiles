@@ -1,5 +1,5 @@
 syntax enable 
-colorscheme elflord
+colorscheme default
 
 set nobackup
 set nowb

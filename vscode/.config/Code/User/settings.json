@@ -13,6 +13,8 @@
   "terminal.integrated.allowChords": false,
   "terminal.integrated.drawBoldTextInBrightColors": false,
   "terminal.integrated.experimentalLinkProvider": false,
+  // avoid a very laggy terminal in virtualized machines
+  "terminal.integrated.gpuAcceleration": "canvas",
   "files.exclude": {
     "**/.classpath": true,
     "**/.project": true,
@@ -52,7 +54,38 @@
     "--max-line-length=200",
     "--indent-size=2"
   ],
-  "workbench.editorAssociations": [],
   "files.autoSave": "afterDelay",
-  "workbench.colorTheme": "Default Light+"
+  "workbench.colorTheme": "Default Light+",
+  "security.workspace.trust.untrustedFiles": "open",
+  "json.schemas": [],
+  "redhat.telemetry.enabled": false,
+  "yaml.customTags": [
+    "!And",
+    "!And sequence",
+    "!If",
+    "!If sequence",
+    "!Not",
+    "!Not sequence",
+    "!Equals",
+    "!Equals sequence",
+    "!Or",
+    "!Or sequence",
+    "!FindInMap",
+    "!FindInMap sequence",
+    "!Base64",
+    "!Join",
+    "!Join sequence",
+    "!Cidr",
+    "!Ref",
+    "!Sub",
+    "!Sub sequence",
+    "!GetAtt",
+    "!GetAZs",
+    "!ImportValue",
+    "!ImportValue sequence",
+    "!Select",
+    "!Select sequence",
+    "!Split",
+    "!Split sequence"
+  ]
 }
