@@ -55,7 +55,6 @@
     "--indent-size=2"
   ],
   "files.autoSave": "afterDelay",
-  "workbench.colorTheme": "Default Light+",
   "security.workspace.trust.untrustedFiles": "open",
   "json.schemas": [],
   "redhat.telemetry.enabled": false,
@@ -87,5 +86,9 @@
     "!Select sequence",
     "!Split",
     "!Split sequence"
-  ]
+  ],
+  "editor.suggest.showMethods": true,
+  "editor.suggest.preview": true,
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.snippetSuggestions": "top"
 }
