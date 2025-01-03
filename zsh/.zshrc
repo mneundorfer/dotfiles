@@ -2,9 +2,9 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/$USER/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="spaceship"
+ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -217,9 +217,16 @@ fi
 RPS1+='[%?] : took ${timer_show}s'
 
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
-source /usr/share/doc/fzf/examples/key-bindings.zsh
+#source /usr/share/doc/fzf/examples/key-bindings.zsh
+if [[ ! "$PATH" == */usr/local/opt/fzf/bin* ]]; then
+  PATH="${PATH:+${PATH}:}/usr/local/opt/fzf/bin"
+fi
+
+source <(fzf --zsh)
 
 # highlight stderr output
 #exec 2>>(while read line; do print '\e[45m[☇ stderr]\e[0m '${(q)line}'' > /dev/tty; print -n $'\0'; done &)
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
